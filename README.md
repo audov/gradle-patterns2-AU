@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/2whys040yinamwxp/branch/main?svg=true)](https://ci.appveyor.com/project/audov/gradle-patterns2-au/branch/main)
