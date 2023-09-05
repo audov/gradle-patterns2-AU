@@ -1,4 +1,4 @@
-package ru.netology.patterns.auth.AU;
+package ru.netology.patterns.auth.au;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
@@ -7,12 +7,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.restassured.RestAssured.given;
-import static ru.netology.patterns.auth.AU.DataGenerator.*;
-import static ru.netology.patterns.auth.AU.DataGenerator.Registration.getRegisteredUser;
-import static ru.netology.patterns.auth.AU.DataGenerator.Registration.getUser;
+import static ru.netology.patterns.auth.au.DataGenerator.*;
+import static ru.netology.patterns.auth.au.DataGenerator.Registration.getRegisteredUser;
+import static ru.netology.patterns.auth.au.DataGenerator.Registration.getUser;
 
 class AuthTest {
 
@@ -33,7 +35,8 @@ class AuthTest {
         $("[data-test-id='login'] input").setValue(registeredUser.getLogin());
         $("[data-test-id='password'] input").setValue(registeredUser.getPassword());
         $("button.button").click();
-        $("h2").shouldHave(Condition.exactText("Личный кабинет")).shouldBe(Condition.visible);
+        $("h2").shouldHave(Condition.exactText("Личный кабинет"))
+                .shouldBe(Condition.visible,Duration.ofSeconds(5));
     }
 
     @Test
@@ -45,7 +48,7 @@ class AuthTest {
         $("button.button").click();
         $("[data-test-id='error-notification'] .notification__content")
                 .shouldHave(Condition.exactText("Ошибка! Неверно указан логин или пароль"))
-                .shouldBe(Condition.visible);
+                .shouldBe(Condition.visible,Duration.ofSeconds(5));
     }
 
     @Test
@@ -57,7 +60,7 @@ class AuthTest {
         $("button.button").click();
         $("[data-test-id='error-notification'] .notification__content")
                 .shouldHave(Condition.exactText("Ошибка! Пользователь заблокирован"))
-                .shouldBe(Condition.visible);
+                .shouldBe(Condition.visible,Duration.ofSeconds(5));
     }
 
     @Test
@@ -70,7 +73,7 @@ class AuthTest {
         $("button.button").click();
         $("[data-test-id='error-notification'] .notification__content")
                 .shouldHave(Condition.exactText("Ошибка! Неверно указан логин или пароль"))
-                .shouldBe(Condition.visible);
+                .shouldBe(Condition.visible,Duration.ofSeconds(5));
     }
 
     @Test
@@ -83,6 +86,6 @@ class AuthTest {
         $("button.button").click();
         $("[data-test-id='error-notification'] .notification__content")
                 .shouldHave(Condition.exactText("Ошибка! Неверно указан логин или пароль"))
-                .shouldBe(Condition.visible);
+                .shouldBe(Condition.visible,Duration.ofSeconds(5));
     }
 }

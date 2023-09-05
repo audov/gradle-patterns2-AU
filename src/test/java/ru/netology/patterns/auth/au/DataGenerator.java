@@ -1,4 +1,4 @@
-package ru.netology.patterns.auth.AU;
+package ru.netology.patterns.auth.au;
 
 import com.github.javafaker.Faker;
 import io.restassured.builder.RequestSpecBuilder;
@@ -10,7 +10,6 @@ import lombok.Value;
 import java.util.Locale;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.when;
 
 public class DataGenerator {
     private static final RequestSpecification requestSpec = new RequestSpecBuilder()
@@ -20,7 +19,7 @@ public class DataGenerator {
             .setContentType(ContentType.JSON)
             .log(LogDetail.ALL)
             .build();
-    private static final Faker faker = new Faker(new Locale("en"));
+    private static final Faker faker = new Faker(new Locale("ru"));
 
     private DataGenerator() {
     }
